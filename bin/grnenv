@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -e
+
+if [ "$GRNENV_HOME" = "" ]; then
+  echo "grnenv: please set \$GRNENV_HOME"
+  echo "  e.g.) export GRNENV_HOME=~/.grnenv"
+  exit 1
+fi
+
+exec_command() {
+  local path=$GRNENV_HOME/libexec/grnenv-$1
+  if [ -f $path ]; then
+    exec $path
+  else
+    echo "grnenv: command not found: <$1>"
+    exit 1
+  fi
+}
+
+command="$1"
+case "$command" in
+  ""|-h|--help)
+    exec_command help
+    ;;
+  -v|--version)
+    exec_command version
+    ;;
+  *)
+    exec_command "${command}"
+    ;;
+esac

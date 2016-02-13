@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Usage: grnenv COMMAND [OPTIONS]"
