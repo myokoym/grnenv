@@ -7,7 +7,7 @@ version=$(grnenv-groonga-version)
 bin_dir=$GRNENV_HOME/versions/$version/bin
 
 clear_shims() {
-  rm $shims_dir/*
+  rm -f $shims_dir/*
 }
 
 create_shim() {

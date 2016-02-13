@@ -9,6 +9,11 @@ if [ "$version" = "" ]; then
   exit 1
 fi
 
+if [ ! -d "$GRNENV_HOME/versions/$version" ]; then
+  echo "grnenv: not installed: <$version>"
+  exit 1
+fi
+
 echo $version > $GRNENV_HOME/version
 
 grnenv-rehash
