@@ -11,7 +11,8 @@ fi
 exec_command() {
   local path=$GRNENV_HOME/libexec/grnenv-$1
   if [ -f $path ]; then
-    exec $path
+    shift
+    exec $path $@
   else
     echo "grnenv: command not found: <$1>"
     exit 1
@@ -27,6 +28,6 @@ case "$command" in
     exec_command version
     ;;
   *)
-    exec_command "${command}"
+    exec_command $@
     ;;
 esac
