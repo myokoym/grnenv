@@ -1,6 +1,6 @@
 language: bash
 env:
-  - GRNENV_HOME=$TRAVIS_BUILD_DIR PATH=$GRNENV_HOME/bin:$PATH
+  - GRNENV_HOME=$TRAVIS_BUILD_DIR
 before_install:
   - git submodule update --init
 script:
