@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+source $GRNENV_HOME/libexec/grnenv-config
+
+repository=$1
+
+if [ "$repository" = "" ]; then
+  abort "Usage: grnenv plugin-install GIT_REPOSITORY_URI"
+fi
+
+current_version=$(grnenv-groonga-version)
+current_version_path=$GRNENV_HOME/versions/$current_version
+plugins_dir=$GRNENV_HOME/plugins/$current_version
+mkdir -p $plugins_dir
+cd $plugins_dir
+
+plugin_name=$(basename $repository .git)
+plugin_path=$plugins_dir/$plugin_name
+
+if [ -d $plugin_path ]; then
+  cd $plugin_path
+  git pull
+else
+  cd $plugins_dir
+  git clone $repository
+  cd $plugin_name
+fi
+
+export LD_LIBRARY_PATH=$current_version_path/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$current_version_path/lib/pkgconfig:$PKG_CONFIG_PATH
+
+./autogen.sh
+./configure --prefix=$current_version_path
+make
+make install
+
+grnenv-rehash
