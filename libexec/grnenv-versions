@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+current_version=$(grnenv-groonga-version)
+
+for version in $(ls $GRNENV_HOME/versions/)
+do
+  if [ $version = $current_version ]; then
+    echo "* $version"
+  else
+    echo "  $version"
+  fi
+done
