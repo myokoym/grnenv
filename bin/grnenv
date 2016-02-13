@@ -8,11 +8,14 @@ if [ "$GRNENV_HOME" = "" ]; then
   exit 1
 fi
 
+libexec_dir=$GRNENV_HOME/libexec
+export PATH="$libexec_dir:$PATH"
+
 exec_command() {
-  local path=$GRNENV_HOME/libexec/grnenv-$1
+  local command=$1
   if [ -f $path ]; then
     shift
-    exec $path $@
+    exec grnenv-$command $@
   else
     echo "grnenv: command not found: <$1>"
     exit 1
