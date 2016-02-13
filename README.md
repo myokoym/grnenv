@@ -40,3 +40,17 @@ $ groonga --version  # 1.0.0
 $ cd ..
 $ groonga --version  # 5.1.2
 ```
+
+### Plugin
+
+#### Install
+
+```
+$ grnenv plugin-install https://github.com/myokoym/groonga-plugin-default_encoding
+```
+
+#### Uninstall
+
+```
+$ grnenv plugin-uninstall groonga-plugin-default_encoding
+```
