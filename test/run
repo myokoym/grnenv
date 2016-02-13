@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-exec bats test
+test_dir=$(cd $(dirname $0) && pwd)
+
+exec $test_dir/../bats/bin/bats $test_dir
