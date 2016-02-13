@@ -2,6 +2,10 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
-version=$(cat $GRNENV_HOME/version)
+if [ -f ".groonga-version" ]; then
+  version=$(cat .groonga-version)
+else
+  version=$(cat $GRNENV_HOME/version)
+fi
 
 echo $version
