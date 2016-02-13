@@ -2,6 +2,8 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
+source $GRNENV_HOME/libexec/grnenv-config
+
 if [ -f ".groonga-version" ]; then
   version=$(cat .groonga-version)
 else

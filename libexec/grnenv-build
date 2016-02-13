@@ -2,11 +2,12 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
+source $GRNENV_HOME/libexec/grnenv-config
+
 version=$1
 
 if [ "$version" = "" ]; then
-  echo "Usage: grnenv build VERSION"
-  exit 1
+  abort "Usage: grnenv build VERSION"
 fi
 
 tmp_dir=/tmp/grnenv-$version

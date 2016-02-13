@@ -2,16 +2,16 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
+source $GRNENV_HOME/libexec/grnenv-config
+
 version=$1
 
 if [ "$version" = "" ]; then
-  echo "Usage: grnenv global VERSION"
-  exit 1
+  abort "Usage: grnenv global VERSION"
 fi
 
 if [ ! -d "$GRNENV_HOME/versions/$version" ]; then
-  echo "grnenv: not installed: <$version>"
-  exit 1
+  abort "grnenv: not installed: <$version>"
 fi
 
 echo $version > $GRNENV_HOME/version

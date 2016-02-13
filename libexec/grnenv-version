@@ -2,4 +2,6 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
+source $GRNENV_HOME/libexec/grnenv-config
+
 cat $GRNENV_HOME/VERSION

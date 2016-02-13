@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+abort() {
+  echo $@ >&2
+  exit 1
+}
+
+export libexec_dir=$GRNENV_HOME/libexec
+export PATH="$libexec_dir:$PATH"

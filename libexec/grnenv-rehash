@@ -2,6 +2,8 @@
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
+source $GRNENV_HOME/libexec/grnenv-config
+
 shims_dir=$GRNENV_HOME/shims
 version=$(grnenv-groonga-version)
 bin_dir=$GRNENV_HOME/versions/$version/bin
