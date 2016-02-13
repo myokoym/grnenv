@@ -1,6 +1,6 @@
 language: bash
 env:
-  - GRNENV_HOME=.
+  - GRNENV_HOME=$TRAVIS_BUILD_DIR
 before_install:
   - sudo add-apt-repository ppa:duggan/bats --yes
   - sudo apt-get update -qq
