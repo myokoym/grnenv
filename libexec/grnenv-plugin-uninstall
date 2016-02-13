@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+source $GRNENV_HOME/libexec/grnenv-config
+
+plugin_name=$1
+
+if [ "$plugin_name" = "" ]; then
+  abort "Usage: grnenv plugin-uninstall PLUGIN_NAME"
+fi
+
+current_version=$(grnenv-groonga-version)
+current_version_path=$GRNENV_HOME/versions/$current_version
+plugins_dir=$GRNENV_HOME/plugins/$current_version
+plugin_path=$plugins_dir/$plugin_name
+
+cd $plugin_path
+
+export LD_LIBRARY_PATH=$current_version_path/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$current_version_path/lib/pkgconfig:$PKG_CONFIG_PATH
+
+make uninstall
+
+grnenv-rehash
