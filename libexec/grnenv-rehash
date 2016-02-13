@@ -3,7 +3,7 @@ set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
 shims_dir=$GRNENV_HOME/shims
-version=$(cat $GRNENV_HOME/version)
+version=$(grnenv-groonga-version)
 bin_dir=$GRNENV_HOME/versions/$version/bin
 
 clear_shims() {
@@ -17,7 +17,10 @@ create_shim() {
 set -e
 [ -n "$GRNENV_DEBUG" ] && set -x
 
-version=$(cat $GRNENV_HOME/version)
+libexec_dir=$GRNENV_HOME/libexec
+export PATH="$libexec_dir:$PATH"
+
+version=$(grnenv-groonga-version)
 
 program=$(basename $0)
 exec $GRNENV_HOME/versions/$version/bin/$program $@
