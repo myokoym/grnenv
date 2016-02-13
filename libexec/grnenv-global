@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+version=$1
+
+if [ "$version" = "" ]; then
+  echo "Usage: grnenv global VERSION"
+  exit 1
+fi
+
+echo $version > $GRNENV_HOME/version
