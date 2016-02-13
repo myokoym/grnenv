@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+shims_dir=$GRNENV_HOME/shims
+version=$(cat $GRNENV_HOME/version)
+bin_dir=$GRNENV_HOME/versions/$version/bin
+
+clear_shims() {
+  rm $shims_dir/*
+}
+
+create_shim() {
+  local shim_path=$shims_dir/$1
+  cat > "$shim_path" <<'SHIM'
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+version=$(cat $GRNENV_HOME/version)
+
+program=$(basename $0)
+exec $GRNENV_HOME/versions/$version/bin/$program $@
+SHIM
+  chmod +x "$shim_path"
+}
+
+clear_shims
+
+for file in $(ls $bin_dir/*)
+do
+  bin_name=$(basename $file)
+  create_shim $bin_name
+done

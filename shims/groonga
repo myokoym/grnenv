@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -e
-[ -n "$GRNENV_DEBUG" ] && set -x
-
-version=$(cat $GRNENV_HOME/version)
-
-$GRNENV_HOME/versions/$version/bin/groonga $@

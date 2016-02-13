@@ -11,5 +11,6 @@ $ export PATH=$GRNENV_HOME/bin:$PATH
 $ export PATH=$GRNENV_HOME/shims:$PATH
 $ grnenv build 5.1.2  # Specify Groonga version
 $ grnenv global 5.1.2
+$ grnenv rehash
 $ groonga version
 ```
