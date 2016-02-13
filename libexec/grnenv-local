@@ -10,3 +10,5 @@ if [ "$version" = "" ]; then
 fi
 
 echo $version > .groonga-version
+
+grnenv-rehash

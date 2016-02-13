@@ -10,3 +10,5 @@ if [ "$version" = "" ]; then
 fi
 
 echo $version > $GRNENV_HOME/version
+
+grnenv-rehash
