@@ -41,6 +41,14 @@ $ cd ..
 $ groonga --version  # 5.1.2
 ```
 
+### Export paths
+
+The following command exports the current version's paths to `LD_LIBRARY_PATH` and `PKG_CONFIG_PATH`.
+
+```
+$ eval $(grnenv export)
+```
+
 ### Plugin
 
 #### Install

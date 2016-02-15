@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+source $GRNENV_HOME/libexec/grnenv-config
+
+shims_dir=$GRNENV_HOME/shims
+version=$(grnenv-groonga-version)
+versions_dir=$GRNENV_HOME/versions
+version_dir=$versions_dir/$version
+bin_dir=$version_dir/bin
+
+echo_export_path() {
+  local old_pattern=$(echo "$versions_dir/\([0-9]\.\)*[0-9]/lib" | sed -e 's/\//\\\//g')
+  local new_path=$version_dir/$1
+  local path=$(eval "echo \$$2" | sed -e "s/${old_pattern}:*//g")
+  echo "export $2=$version_dir/$1:$path"
+}
+
+echo_export_path lib LD_LIBRARY_PATH
+echo_export_path lib/pkgconfig PKG_CONFIG_PATH
