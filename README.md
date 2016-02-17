@@ -2,6 +2,11 @@
 
 Make Groonga build easy. Inspired by [rbenv](https://github.com/rbenv/rbenv).
 
+## Requirements
+
+* Bash
+* Autotools
+
 ## Install
 
 ```
