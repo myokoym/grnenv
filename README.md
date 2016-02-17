@@ -12,8 +12,7 @@ Make Groonga build easy. Inspired by [rbenv](https://github.com/rbenv/rbenv).
 ```
 $ git clone https://github.com/myokoym/grnenv ~/.grnenv
 $ export GRNENV_HOME=~/.grnenv
-$ export PATH=$GRNENV_HOME/bin:$PATH
-$ export PATH=$GRNENV_HOME/shims:$PATH
+$ export PATH=$GRNENV_HOME/bin:$GRNENV_HOME/shims:$PATH
 ```
 
 ## Usage
