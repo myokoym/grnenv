@@ -4,4 +4,18 @@ set -e
 
 source $GRNENV_HOME/libexec/grnenv-config
 
-echo "Usage: grnenv COMMAND [OPTIONS]"
+cat <<USAGE
+Usage: grnenv COMMAND [OPTIONS]
+Commands:
+  build
+  export
+  global
+  groonga-version
+  help
+  local
+  plugin-install
+  plugin-uninstall
+  rehash
+  version
+  versions
+USAGE
