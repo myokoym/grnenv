@@ -14,11 +14,12 @@ current_version=$(grnenv-groonga-version)
 current_version_path=$GRNENV_HOME/versions/$current_version
 plugins_dir=$GRNENV_HOME/plugins/$current_version
 plugin_path=$plugins_dir/$plugin_name
+prefix=$(dirname $(dirname $(grnenv-which groonga)))
 
 cd $plugin_path
 
-export LD_LIBRARY_PATH=$current_version_path/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$current_version_path/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$prefix/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$prefix/lib/pkgconfig:$PKG_CONFIG_PATH
 
 make uninstall
 
