@@ -14,7 +14,7 @@ echo_export_path() {
   local old_pattern=$(echo "$versions_dir/\([0-9]\.\)*[0-9]/lib" | sed -e 's/\//\\\//g')
   local new_path=$version_dir/$1
   local path=$(eval "echo \$$2" | sed -e "s/${old_pattern}:*//g")
-  echo "export $2=$version_dir/$1:$path"
+  echo "export $2=$new_path:$path"
 }
 
 echo_export_path lib LD_LIBRARY_PATH
