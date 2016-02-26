@@ -25,14 +25,27 @@ export PATH="$libexec_dir:$PATH"
 version=$(grnenv-groonga-version)
 
 program=$(basename $0)
-exec $GRNENV_HOME/versions/$version/bin/$program $@
+if [ "$version" = "system" ]; then
+  (
+    PATH=$(eval "echo $PATH" | sed -e "s/$GRNENV_HOME/shims:*//g")
+    $program $@
+  )
+else
+  exec $GRNENV_HOME/versions/$version/bin/$program $@
+fi
 SHIM
   chmod +x "$shim_path"
 }
 
 clear_shims
 
-for file in $(ls $bin_dir/*)
+if [ "$version" = "system" ]; then
+  files=""
+else
+  files=$(ls $bin_dir/*)
+fi
+
+for file in $files
 do
   bin_name=$(basename $file)
   create_shim $bin_name

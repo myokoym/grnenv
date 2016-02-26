@@ -11,7 +11,9 @@ if [ "$version" = "" ]; then
 fi
 
 if [ ! -d "$GRNENV_HOME/versions/$version" ]; then
-  abort "grnenv: not installed: <$version>"
+  if [ "$version" != "system" ]; then
+    abort "grnenv: not installed: <$version>"
+  fi
 fi
 
 echo $version > .groonga-version
