@@ -30,7 +30,8 @@ SHIM
   chmod +x "$shim_path"
 }
 
-clear_shims
+# Need?
+#clear_shims
 
 if [ "$version" = "system" ]; then
   files=""
