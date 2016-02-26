@@ -45,6 +45,16 @@ $ cd ..
 $ groonga --version  # 5.1.2
 ```
 
+#### Use system installed Groonga
+
+```
+$ grnenv local system
+$ cat .groonga-version
+system
+$ which groonga
+/tmp/local/bin/groonga
+```
+
 ### Export paths
 
 The following command exports the current version's paths to `LD_LIBRARY_PATH` and `PKG_CONFIG_PATH`.
