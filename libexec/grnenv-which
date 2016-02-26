@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$GRNENV_DEBUG" ] && set -x
+
+source $GRNENV_HOME/libexec/grnenv-config
+
+shims_dir=$GRNENV_HOME/shims
+version=$(grnenv-groonga-version)
+program=$1
+
+if [ "$version" = "system" ]; then
+  pattern=$(echo "$shims_dir" | sed -e 's/\//\\\//g')
+  PATH=$(echo "$PATH" | sed -e "s/${pattern}:*//g")
+  which $program
+else
+  echo $GRNENV_HOME/versions/$version/bin/$program
+fi
