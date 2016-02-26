@@ -18,7 +18,6 @@ wget http://packages.groonga.org/source/groonga/groonga-$version.tar.gz
 tar xzvf groonga-$version.tar.gz
 cd groonga-$version
 
-mkdir -p $GRNENV_HOME/versions/$version
 ./configure --prefix=$GRNENV_HOME/versions/$version
 make
 make install
