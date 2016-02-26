@@ -37,6 +37,8 @@ $ groonga --version  # 5.1.2
 #### Only current directory
 
 ```
+$ grnenv build 1.0.0
+...
 $ grnenv local 1.0.0
 $ cat .groonga-version
 1.0.0
@@ -46,6 +48,8 @@ $ groonga --version  # 5.1.2
 ```
 
 #### Use system installed Groonga
+
+If Groonga is installed in `/tmp/local`:
 
 ```
 $ grnenv local system
