@@ -1,6 +1,6 @@
 # grnenv [![Build Status](https://secure.travis-ci.org/myokoym/grnenv.png?branch=master)](http://travis-ci.org/myokoym/grnenv)
 
-Make Groonga build easy. Inspired by [rbenv](https://github.com/rbenv/rbenv).
+Make [Groonga](http://groonga.org) build easy. Inspired by [rbenv](https://github.com/rbenv/rbenv).
 
 ## Requirements
 
