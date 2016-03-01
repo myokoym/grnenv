@@ -8,7 +8,7 @@ if [ -f ".groonga-version" ]; then
   version=$(cat .groonga-version)
 else
   if [ -f $GRNENV_HOME/version ]; then
-  version=$(cat $GRNENV_HOME/version)
+    version=$(cat $GRNENV_HOME/version)
   else
     version="system"
   fi
