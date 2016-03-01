@@ -39,6 +39,10 @@ else
   files=$(ls $bin_dir/*)
 fi
 
+if [ ! -d $shims_dir ]; then
+  mkdir -p $shims_dir
+fi
+
 for file in $files
 do
   bin_name=$(basename $file)
