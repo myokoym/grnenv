@@ -14,7 +14,7 @@ tmp_dir=/tmp/grnenv-$version
 mkdir -p $tmp_dir
 cd $tmp_dir
 
-wget http://packages.groonga.org/source/groonga/groonga-$version.tar.gz
+wget https://packages.groonga.org/source/groonga/groonga-$version.tar.gz
 tar xzvf groonga-$version.tar.gz
 cd groonga-$version
 
