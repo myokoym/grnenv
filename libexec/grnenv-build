@@ -11,6 +11,7 @@ if [ "$version" = "" ]; then
 fi
 
 tmp_dir=/tmp/grnenv-$version
+rm -fr $tmp_dir
 mkdir -p $tmp_dir
 cd $tmp_dir
 
