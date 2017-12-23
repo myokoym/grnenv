@@ -40,5 +40,7 @@ case $OPENSSL_VERSION in
 	;;
 esac
 ./configure --prefix=$GRNENV_HOME/versions/$version
+# Suppress fallthrough error with GCC 7.x
+sed -i'' -e 's/-Werror/-Werror=implicit-fallthrough=0/' vendor/nginx-*/objs/Makefile
 make
 make install
