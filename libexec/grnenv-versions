@@ -17,4 +17,6 @@ done
 
 if [ $current_version = "system" ]; then
   echo "* system ($(grnenv-which groonga))"
+else
+  echo "  system"
 fi
