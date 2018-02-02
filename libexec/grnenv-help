@@ -16,6 +16,7 @@ Commands:
   plugin-install
   plugin-uninstall
   rehash
+  root
   version
   versions
 USAGE
