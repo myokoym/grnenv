@@ -19,6 +19,28 @@ wget https://packages.groonga.org/source/groonga/groonga-$version.tar.gz
 tar xzvf groonga-$version.tar.gz
 cd groonga-$version
 
+# It needs patch to build with OpenSSL 1.1.x between Groonga 6.0.3 and 6.0.8.
+OPENSSL_PATCH=$GRNENV_HOME/patches/fix-nginx-build-error-with-openssl-1.1.patch
+OPENSSL_VERSION=$(pkg-config --modversion openssl)
+case $OPENSSL_VERSION in
+    1\.1\.*)
+	case $version in
+	    6\.0\.[3-8])
+		# NOTE: 6.0.0 - 6.0.2 needs more patch to support OpenSSL 1.1.x
+		echo "apply $OPENSSL_PATCH"
+		(cd vendor/nginx-* && patch -p3 < $OPENSSL_PATCH)
+		;;
+	    *)
+		echo "No need to apply $OPENSSL_PATCH"
+		;;
+	esac
+	;;
+    *)
+	echo "No need to apply patch older than OpenSSL 1.1.x"
+	;;
+esac
 ./configure --prefix=$GRNENV_HOME/versions/$version
+# Suppress fallthrough error with GCC 7.x
+sed -i'' -e 's/-Werror/-Werror=implicit-fallthrough=0/' vendor/nginx-*/objs/Makefile
 make
 make install
